@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace bwets.NetCore.Identity.MongoDb
+namespace bwets.NetCore.Identity.Model
 {
     public class IdentityUserClaim
     {
@@ -14,36 +14,31 @@ namespace bwets.NetCore.Identity.MongoDb
             Value = claim.Value;
         }
 
-        //
-        // Summary:
-        //     Gets the subject of the claim.
-        //
-        // Returns:
-        //     The subject of the claim.
+		/// <summary>
+		/// Gets the subject of the claim.
+		/// <returns>
+		/// The subject of the claim.
+		/// </returns>
+		/// </summary>
         public ClaimsIdentity Subject { get; set; }
 
-        //
-        // Summary:
-        //     Gets the original issuer of the claim.
-        //
-        // Returns:
-        //     A name that refers to the original issuer of the claim.
+		/// <summary>
+		/// Gets the original issuer of the claim.
+		/// <returns>
+		/// A name that refers to the original issuer of the claim.</returns>
+		/// </summary>
         public string OriginalIssuer { get; set; }
-
-        //
-        // Summary:
-        //     Gets the issuer of the claim.
-        //
-        // Returns:
-        //     A name that refers to the issuer of the claim.
-        public string Issuer { get; set; }
-
-        //
-        // Summary:
-        //     Gets the value type of the claim.
-        //
-        // Returns:
-        //     The claim value type.
+		
+	    /// <summary>
+		/// Gets the issuer of the claim.
+		/// <returns>A name that refers to the issuer of the claim.</returns>
+		/// </summary>
+		public string Issuer { get; set; }
+		
+		/// <summary>
+		/// Gets the value type of the claim.
+		/// <returns>The claim value type.</returns>
+		/// </summary>
         public string ValueType { get; }
 
         /// <summary>

@@ -1,5 +1,7 @@
 ﻿using System;
-using bwets.NetCore.Identity.MongoDb.Stores;
+using bwets.NetCore.Identity.Model;
+using bwets.NetCore.Identity.MongoDb;
+using bwets.NetCore.Identity.Stores;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,31 +9,31 @@ namespace bwets.NetCore.Identity.MongoDb
 {
     public static class Extensions
     {
-        public static IServiceCollection AddMongoIdentityProvider(this IServiceCollection services)
+        public static IServiceCollection AddIdentityMongoDbProvider(this IServiceCollection services)
         {
-            return AddMongoIdentityProvider<MongoIdentityUser, MongoIdentityRole>(services, null, null);
+            return AddIdentityMongoDbProvider<IdentityUser, IdentityRole>(services, null, null);
         }
 
-        public static IServiceCollection AddMongoIdentityProvider<TUser>(this IServiceCollection services) where TUser : MongoIdentityUser
+        public static IServiceCollection AddIdentityMongoDbProvider<TUser>(this IServiceCollection services) where TUser : IdentityUser
         {
-            return AddMongoIdentityProvider<TUser, MongoIdentityRole>(services, null, null);
+            return AddIdentityMongoDbProvider<TUser, IdentityRole>(services, null, null);
         }
 
-        public static IServiceCollection AddMongoIdentityProvider<TUser, TRole>(this IServiceCollection services) where TUser : MongoIdentityUser
-            where TRole : MongoIdentityRole
+        public static IServiceCollection AddIdentityMongoDbProvider<TUser, TRole>(this IServiceCollection services) where TUser : IdentityUser
+            where TRole : IdentityRole
         {
-            return AddMongoIdentityProvider<TUser, TRole>(services, null, null);
+            return AddIdentityMongoDbProvider<TUser, TRole>(services, null, null);
         }
 
-        public static IServiceCollection AddMongoIdentityProvider<TUser, TRole>(this IServiceCollection services,
-            Action<IdentityOptions> setupIdentityAction, Action<DatabaseOptions> setupDatabaseAction) where TUser : MongoIdentityUser
-            where TRole : MongoIdentityRole
+        public static IServiceCollection AddIdentityMongoDbProvider<TUser, TRole>(this IServiceCollection services,
+            Action<IdentityOptions> setupIdentityAction, Action<DatabaseOptions> setupDatabaseAction) where TUser : IdentityUser
+            where TRole : IdentityRole
         {
-            return AddMongoIdentityProvider<TUser, TRole>(services, null, setupIdentityAction,setupDatabaseAction);
+            return AddIdentityMongoDbProvider<TUser, TRole>(services, null, setupIdentityAction,setupDatabaseAction);
         }
 
-        public static IServiceCollection AddMongoIdentityProvider<TUser,TRole>(this IServiceCollection services, string connectionString, Action<IdentityOptions> setupIdentityAction, Action<DatabaseOptions> setupDatabaseAction) where TUser : MongoIdentityUser
-                                                                                                                                                                 where TRole : MongoIdentityRole
+        public static IServiceCollection AddIdentityMongoDbProvider<TUser,TRole>(this IServiceCollection services, string connectionString, Action<IdentityOptions> setupIdentityAction, Action<DatabaseOptions> setupDatabaseAction) where TUser : IdentityUser
+                                                                                                                                                                 where TRole : IdentityRole
         {
             services.AddIdentity<TUser, TRole>(setupIdentityAction ?? (x=>{}))
                 .AddRoleStore<RoleStore<TRole>>()
@@ -39,8 +41,8 @@ namespace bwets.NetCore.Identity.MongoDb
                 .AddDefaultTokenProviders();
 			var dbOptions =new DatabaseOptions();
 	        setupDatabaseAction(dbOptions);
-            var userCollection = new Collection<Guid,TUser>(dbOptions.ConnectionString, dbOptions.UsersCollection);
-            var roleCollection = new Collection<Guid,TRole>(dbOptions.ConnectionString, dbOptions.RolesCollection);
+            var userCollection = new IdentityUserCollection<TUser>(dbOptions.ConnectionString, dbOptions.UsersCollection);
+            var roleCollection = new IdentityRoleCollection<TRole>(dbOptions.ConnectionString, dbOptions.RolesCollection);
 
 
             // Identity Services

@@ -17,3 +17,8 @@
 /bwets.NetCore.Identity.MongoDb/bin
 /bwets.NetCore.Identity.MongoDb/obj
 /bwets.NetCore.Identity.MongoDb/Properties/PublishProfiles
+/bwets.NetCore.Identity/bin
+/bwets.NetCore.Identity/obj
+/bwets.NetCore.Identity.ServiceProxy/bin
+/bwets.NetCore.Identity.ServiceProxy/obj
+*.user

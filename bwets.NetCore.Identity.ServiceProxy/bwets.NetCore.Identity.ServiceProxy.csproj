@@ -5,14 +5,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="MongoDB.Driver" Version="2.6.1" />
+		<ProjectReference Include="..\bwets.NetCore.Identity\bwets.NetCore.Identity.csproj" />
 		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="2.0.4" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.3" />
+		<PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+		<PackageReference Include="RestSharp" Version="106.2.2" />
 
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\bwets.NetCore.Identity\bwets.NetCore.Identity.csproj" />
 	</ItemGroup>
 
 </Project>

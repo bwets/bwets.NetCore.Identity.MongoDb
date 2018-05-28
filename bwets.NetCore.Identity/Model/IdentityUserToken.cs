@@ -1,4 +1,4 @@
-﻿namespace bwets.NetCore.Identity.MongoDb
+﻿namespace bwets.NetCore.Identity.Model
 {
     public class IdentityUserToken
     {

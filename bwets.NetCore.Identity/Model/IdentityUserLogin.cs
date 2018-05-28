@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace bwets.NetCore.Identity.MongoDb
+namespace bwets.NetCore.Identity.Model
 {
     public class IdentityUserLogin
     {

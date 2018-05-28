@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using bwets.NetCore.Identity.MongoDb.Stores;
-using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.IdGenerators;
 
-namespace bwets.NetCore.Identity.MongoDb
+namespace bwets.NetCore.Identity.Model
 {
-	public class MongoIdentityUser : ICollectionItem<Guid>
+	public abstract class IdentityObject
 	{
-		public MongoIdentityUser()
+		public Guid Id { get; set; }
+	}
+	public class IdentityUser : IdentityObject
+	{
+		public IdentityUser()
 		{
 			Roles = new List<string>();
 			Claims = new List<IdentityUserClaim>();
@@ -31,19 +32,16 @@ namespace bwets.NetCore.Identity.MongoDb
 		public virtual int AccessFailedCount { get; set; }
 		public string AuthenticatorKey { get; set; }
 
-		[BsonIgnoreIfNull] public string PasswordHash { get; set; }
+		public string PasswordHash { get; set; }
 
-		[BsonIgnoreIfNull] public List<string> Roles { get; set; }
+		public List<string> Roles { get; set; }
 
-		[BsonIgnoreIfNull] public List<IdentityUserClaim> Claims { get; set; }
+		public List<IdentityUserClaim> Claims { get; set; }
 
-		[BsonIgnoreIfNull] public List<IdentityUserLogin> Logins { get; set; }
+		public List<IdentityUserLogin> Logins { get; set; }
 
-		[BsonIgnoreIfNull] public List<IdentityUserToken> Tokens { get; set; }
+		public List<IdentityUserToken> Tokens { get; set; }
 
-		[BsonIgnoreIfNull] public List<TwoFactorRecoveryCode> RecoveryCodes { get; set; }
-
-		[BsonId(IdGenerator = typeof(GuidGenerator))]
-		public Guid Id { get; set; }
+		public List<TwoFactorRecoveryCode> RecoveryCodes { get; set; }
 	}
 }
