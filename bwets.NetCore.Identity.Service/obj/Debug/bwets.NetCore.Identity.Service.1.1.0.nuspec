@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>bwets.NetCore.Identity.Service</id>
+    <version>1.1.0</version>
+    <authors>Gregory Kieffer</authors>
+    <owners>Gregory Kieffer</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.githubusercontent.com/bwets/bwets.NetCore.Identity.MongoDb/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/bwets/bwets.NetCore.Identity.MongoDb</projectUrl>
+    <description>MongoDb based identity framework for Asp.Net Core 2, forked from the excellent work from Matteo Fabbri</description>
+    <copyright>Gregory Kieffer (2018)</copyright>
+    <tags>asp core identity mongo framework aspnetcore mongodb dotnetcore netcore2 core2</tags>
+    <repository url="https://github.com/bwets/bwets.NetCore.Identity.MongoDb" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp2.0">
+        <dependency id="bwets.NetCore.Identity" version="1.1.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore" version="2.0.3" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc.Core" version="2.0.4" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc.ViewFeatures" version="2.0.4" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.DependencyInjection" version="2.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.DependencyInjection.Abstractions" version="2.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging" version="2.0.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Logging.Abstractions" version="2.0.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Primitives" version="2.0.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="11.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\bin\Debug\netcoreapp2.0\bwets.NetCore.Identity.Service.dll" target="lib\netcoreapp2.0\bwets.NetCore.Identity.Service.dll" />
+  </files>
+</package>

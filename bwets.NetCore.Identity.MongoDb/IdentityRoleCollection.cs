@@ -14,12 +14,12 @@ namespace bwets.NetCore.Identity.MongoDb
 
 		public async Task<TRole> FindByNameAsync(string normalizedName)
 		{
-			return await this.FirstOrDefaultAsync(x => x.NormalizedName == normalizedName);
+			return await FirstOrDefaultAsync(x => x.NormalizedName == normalizedName);
 		}
 
 		public async Task<TRole> FindByIdAsync(Guid roleId)
 		{
-			return await this.FirstOrDefaultAsync(x => x.Id == roleId);
+			return await FirstOrDefaultAsync(x => x.Id == roleId);
 		}
 	}
 }

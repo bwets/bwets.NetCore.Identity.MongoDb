@@ -3,10 +3,6 @@ using System.Collections.Generic;
 
 namespace bwets.NetCore.Identity.Model
 {
-	public abstract class IdentityObject
-	{
-		public Guid Id { get; set; }
-	}
 	public class IdentityUser : IdentityObject
 	{
 		public IdentityUser()

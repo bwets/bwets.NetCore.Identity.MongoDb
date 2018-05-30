@@ -63,7 +63,8 @@ namespace bwets.NetCore.Identity.Stores
 		public async Task RemoveTokenAsync(TUser user, string loginProvider, string name,
 			CancellationToken cancellationToken)
 		{
-			var dbUser = await _userCollection.FindByIdAsync(user.Id);;
+			var dbUser = await _userCollection.FindByIdAsync(user.Id);
+			;
 			if (dbUser?.Tokens == null) return;
 
 			dbUser.Tokens.RemoveAll(x => x.LoginProvider == loginProvider && x.Name == name);
@@ -106,10 +107,7 @@ namespace bwets.NetCore.Identity.Stores
 
 		public Task<TUser> FindByIdAsync(string userId, CancellationToken cancellationToken)
 		{
-			if(!Guid.TryParse(userId, out Guid id))
-			{
-				throw new ApplicationException("Invalid user Id");
-			}
+			if (!Guid.TryParse(userId, out var id)) throw new ApplicationException("Invalid user Id");
 			return _userCollection.FindByIdAsync(id);
 		}
 
@@ -304,7 +302,7 @@ namespace bwets.NetCore.Identity.Stores
 		public async Task<TUser> FindByLoginAsync(string loginProvider, string providerKey,
 			CancellationToken cancellationToken)
 		{
-			return await _userCollection.FindByLoginAsync(loginProvider ,providerKey);
+			return await _userCollection.FindByLoginAsync(loginProvider, providerKey);
 		}
 
 		public async Task<IList<UserLoginInfo>> GetLoginsAsync(TUser user, CancellationToken cancellationToken)

@@ -1,7 +1,4 @@
-﻿using System;
-using bwets.NetCore.Identity.Stores;
-
-namespace bwets.NetCore.Identity.Model
+﻿namespace bwets.NetCore.Identity.Model
 {
 	public class IdentityRole : IdentityObject
 	{

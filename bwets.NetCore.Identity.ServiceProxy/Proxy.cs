@@ -50,7 +50,8 @@ namespace bwets.NetCore.Identity.ServiceProxy
 			return message;
 		}
 
-		public async Task<TResponse> Execute<TResponse>(string relativeUri, HttpMethod method = null, object content = null, object datasourceRequest = null)
+		public async Task<TResponse> Execute<TResponse>(string relativeUri, HttpMethod method = null, object content = null,
+			object datasourceRequest = null)
 		{
 			TResponse response;
 

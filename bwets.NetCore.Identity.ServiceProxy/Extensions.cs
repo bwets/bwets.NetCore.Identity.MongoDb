@@ -49,10 +49,8 @@ namespace bwets.NetCore.Identity.ServiceProxy
 				.AddDefaultTokenProviders();
 			var options = new ServiceOptions();
 			setupServiceAction(options);
-			var userCollection = new IdentityUserCollection<TUser>(new Uri(options.BaseUrl));
-			var roleCollection = new IdentityRoleCollection<TRole>(new Uri(options.BaseUrl));
-
-
+			var userCollection = new IdentityUserCollectionProxy<TUser>(new Uri(options.BaseUrl));
+			var roleCollection = new IdentityRoleCollectionProxy<TRole>(new Uri(options.BaseUrl));
 			// Identity Services
 			services.AddTransient<IUserStore<TUser>>(x => new UserStore<TUser, TRole>(userCollection, roleCollection));
 			services.AddTransient<IRoleStore<TRole>>(x => new RoleStore<TRole>(roleCollection));

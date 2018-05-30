@@ -58,7 +58,8 @@ namespace bwets.NetCore.Identity.Stores
 			return await Task.FromResult(role.NormalizedName);
 		}
 
-		async Task IRoleStore<TRole>.SetNormalizedRoleNameAsync(TRole role, string normalizedName,CancellationToken cancellationToken)
+		async Task IRoleStore<TRole>.SetNormalizedRoleNameAsync(TRole role, string normalizedName,
+			CancellationToken cancellationToken)
 		{
 			role.NormalizedName = normalizedName;
 			await _collection.UpdateAsync(role);

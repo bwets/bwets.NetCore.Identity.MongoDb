@@ -15,14 +15,15 @@ namespace bwets.NetCore.Identity.ServiceProxy
 		{
 		}
 
-		public ServiceException(string message, HttpStatusCode statusCode, string statusMessage, string response) : base(message)
+		public ServiceException(string message, HttpStatusCode statusCode, string statusMessage, string response) :
+			base(message)
 		{
-			this.StatusCode = statusCode;
-			this.StatusMessage = statusMessage;
-			this.Response = response;
+			StatusCode = statusCode;
+			StatusMessage = statusMessage;
+			Response = response;
 			try
 			{
-				this.ResponseObject = JsonConvert.DeserializeObject(this.Response);
+				ResponseObject = JsonConvert.DeserializeObject(Response);
 			}
 			catch
 			{
@@ -32,8 +33,8 @@ namespace bwets.NetCore.Identity.ServiceProxy
 
 		public ServiceException(HttpStatusCode statusCode, string statusMessage) : base(statusCode.ToString())
 		{
-			this.StatusCode = statusCode;
-			this.StatusMessage = statusMessage;
+			StatusCode = statusCode;
+			StatusMessage = statusMessage;
 		}
 
 		public ServiceException(string message, Exception innerException) : base(message, innerException)

@@ -11,11 +11,6 @@ namespace bwets.NetCore.Identity.MongoDb
 {
 	public class IdentityObjectCollection<TItem> : IIdentityObjectCollection<TItem> where TItem : IdentityObject
 	{
-		public async Task<TItem> FindByIdAsync(Guid itemId)
-		{
-			return await this.FirstOrDefaultAsync(item => item.Id == itemId);
-		}
-
 		public IdentityObjectCollection(string connectionString, string collectionName)
 		{
 			var type = typeof(TItem);
@@ -24,34 +19,21 @@ namespace bwets.NetCore.Identity.MongoDb
 			{
 				var url = new MongoUrl(connectionString);
 				var client = new MongoClient(connectionString);
-				MongoCollection = client.GetDatabase(url.DatabaseName ?? "default").GetCollection<TItem>(collectionName ?? type.Name.ToLowerInvariant());
+				MongoCollection = client.GetDatabase(url.DatabaseName ?? "default")
+					.GetCollection<TItem>(collectionName ?? type.Name.ToLowerInvariant());
 			}
 			else
 			{
-				MongoCollection = new MongoClient().GetDatabase("default").GetCollection<TItem>(collectionName ?? type.Name.ToLowerInvariant());
+				MongoCollection = new MongoClient().GetDatabase("default")
+					.GetCollection<TItem>(collectionName ?? type.Name.ToLowerInvariant());
 			}
 		}
 
 		private IMongoCollection<TItem> MongoCollection { get; }
 
-
-		public IQueryable<TItem> Queryable()
+		public async Task<TItem> FindByIdAsync(Guid itemId)
 		{
-			return MongoCollection.AsQueryable();
-		}
-
-
-		public bool Any(Expression<Func<TItem, bool>> p)
-		{
-			return MongoCollection.Find(p).Any();
-		}
-
-
-		public async Task<IEnumerable<TItem>> AnyEqualAsync<K>(Expression<Func<TItem, IEnumerable<K>>> sel, K value)
-		{
-			var filter = Builders<TItem>.Filter.AnyEq(sel, value);
-			var res = await MongoCollection.FindAsync(filter);
-			return res.ToEnumerable();
+			return await FirstOrDefaultAsync(item => item.Id == itemId);
 		}
 
 
@@ -73,30 +55,34 @@ namespace bwets.NetCore.Identity.MongoDb
 			await MongoCollection.ReplaceOneAsync(filter, obj);
 		}
 
-		/*public async Task UpdateAsync<K>(TItem obj, Expression<Func<TItem, K>> sel, K value)
+		public async Task DeleteAsync(TItem obj)
 		{
-			var filter = Builders<TItem>.Filter.Eq(x => x.Id, obj.Id);
-			var update = Builders<TItem>.Update.Set(sel, value);
-			await MongoCollection.UpdateOneAsync(filter, update);
-		}*/
+			await MongoCollection.DeleteOneAsync(Builders<TItem>.Filter.Eq(x => x.Id, obj.Id));
+		}
 
 
-		/*		public async Task IncreaseAsync<K>(TItem obj, Expression<Func<TItem, K>> sel, K value)
-				{
-					var filter = Builders<TItem>.Filter.Eq(x => x.Id, obj.Id);
-					var update = Builders<TItem>.Update.Inc(sel, value);
-					await MongoCollection.UpdateOneAsync(filter, update);
-				}*/
+		public IQueryable<TItem> Queryable()
+		{
+			return MongoCollection.AsQueryable();
+		}
 
+
+		public bool Any(Expression<Func<TItem, bool>> p)
+		{
+			return MongoCollection.Find(p).Any();
+		}
+
+
+		public async Task<IEnumerable<TItem>> AnyEqualAsync<K>(Expression<Func<TItem, IEnumerable<K>>> sel, K value)
+		{
+			var filter = Builders<TItem>.Filter.AnyEq(sel, value);
+			var res = await MongoCollection.FindAsync(filter);
+			return res.ToEnumerable();
+		}
 
 		public async Task DeleteAsync(Expression<Func<TItem, bool>> p)
 		{
 			await MongoCollection.DeleteManyAsync(p);
-		}
-
-		public async Task DeleteAsync(TItem obj)
-		{
-			await MongoCollection.DeleteOneAsync(Builders<TItem>.Filter.Eq(x => x.Id, obj.Id));
 		}
 
 

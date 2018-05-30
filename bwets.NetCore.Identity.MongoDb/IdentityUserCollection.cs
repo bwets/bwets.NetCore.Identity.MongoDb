@@ -16,32 +16,33 @@ namespace bwets.NetCore.Identity.MongoDb
 
 		public async Task<TUser> FindByEmailAsync(string normalizedEmail)
 		{
-			return await this.FirstOrDefaultAsync(u => u.NormalizedEmail == normalizedEmail);
+			return await FirstOrDefaultAsync(u => u.NormalizedEmail == normalizedEmail);
 		}
 
-		public async Task<TUser> FindByUserNameAsync(string userUserName)
+		public async Task<TUser> FindByUserNameAsync(string username)
 		{
-			return await this.FirstOrDefaultAsync(u => u.UserName == userUserName);
+			return await FirstOrDefaultAsync(u => u.UserName == username);
 		}
 
 		public async Task<TUser> FindByNormalizedUserNameAsync(string normalizedUserName)
 		{
-			return await this.FirstOrDefaultAsync(u => u.NormalizedUserName == normalizedUserName);
+			return await FirstOrDefaultAsync(u => u.NormalizedUserName == normalizedUserName);
 		}
 
 		public async Task<TUser> FindByLoginAsync(string loginProvider, string providerKey)
 		{
-			return await this.FirstOrDefaultAsync(u => u.Logins.Any(l => l.LoginProvider == loginProvider && l.ProviderKey == providerKey));
+			return await FirstOrDefaultAsync(u =>
+				u.Logins.Any(l => l.LoginProvider == loginProvider && l.ProviderKey == providerKey));
 		}
 
 		public async Task<IEnumerable<TUser>> FindUsersByClaimAsync(string claimType, string claimValue)
 		{
-			return await this.WhereAsync(u =>u.Claims.Any(c => c.Type == claimType && c.Value == claimValue));
+			return await WhereAsync(u => u.Claims.Any(c => c.Type == claimType && c.Value == claimValue));
 		}
 
 		public async Task<IEnumerable<TUser>> FindUsersInRoleAsync(string roleName)
 		{
-			return await this.AnyEqualAsync(x => x.Roles, roleName);
+			return await AnyEqualAsync(x => x.Roles, roleName);
 		}
 	}
 }
