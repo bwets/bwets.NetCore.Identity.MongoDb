@@ -1,0 +1,12 @@
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\bin\Release\netcoreapp2.0\bwets.NetCore.Identity.Service.deps.json
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\bin\Release\netcoreapp2.0\bwets.NetCore.Identity.Service.dll
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\bin\Release\netcoreapp2.0\bwets.NetCore.Identity.Service.pdb
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\bin\Release\netcoreapp2.0\bwets.NetCore.Identity.dll
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\bin\Release\netcoreapp2.0\bwets.NetCore.Identity.pdb
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\obj\Release\netcoreapp2.0\bwets.NetCore.Identity.Service.csprojAssemblyReference.cache
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\obj\Release\netcoreapp2.0\bwets.NetCore.Identity.Service.csproj.CoreCompileInputs.cache
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\obj\Release\netcoreapp2.0\bwets.NetCore.Identity.Service.AssemblyInfoInputs.cache
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\obj\Release\netcoreapp2.0\bwets.NetCore.Identity.Service.AssemblyInfo.cs
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\obj\Release\netcoreapp2.0\bwets.NetCore.Identity.Service.csproj.CopyComplete
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\obj\Release\netcoreapp2.0\bwets.NetCore.Identity.Service.dll
+C:\Sources\bwets\bwets.NetCore.Identity\bwets.NetCore.Identity.Service\obj\Release\netcoreapp2.0\bwets.NetCore.Identity.Service.pdb

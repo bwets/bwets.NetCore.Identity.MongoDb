@@ -22,3 +22,6 @@
 /bwets.NetCore.Identity.ServiceProxy/bin
 /bwets.NetCore.Identity.ServiceProxy/obj
 *.user
+/bwets.NetCore.Identity.Service/bin/Release
+/bwets.NetCore.Identity.Service/obj/Release/netcoreapp2.0/bwets.NetCore.Identity.Service.csproj.CopyComplete
+/bwets.NetCore.Identity.Service/obj/Release/bwets.NetCore.Identity.Service.1.1.1.nuspec
