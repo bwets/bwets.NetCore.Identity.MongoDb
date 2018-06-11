@@ -9,7 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bwets.NetCore.Identity.Mong
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bwets.NetCore.Identity.ServiceProxy", "bwets.NetCore.Identity.ServiceProxy\bwets.NetCore.Identity.ServiceProxy.csproj", "{284E6DB6-6818-44E3-AF2D-D820E93BD8E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bwets.NetCore.Identity.Service", "bwets.NetCore.Identity.Service\bwets.NetCore.Identity.Service.csproj", "{D6715884-C8B2-48FD-B269-6DE4A1F3AC1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "bwets.NetCore.Identity.Service", "bwets.NetCore.Identity.Service\bwets.NetCore.Identity.Service.csproj", "{D6715884-C8B2-48FD-B269-6DE4A1F3AC1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A0246EA4-E3EF-4962-BE90-1D34F5B0FFD6}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
