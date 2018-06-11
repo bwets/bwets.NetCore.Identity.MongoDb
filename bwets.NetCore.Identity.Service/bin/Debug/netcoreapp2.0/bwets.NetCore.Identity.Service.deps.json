@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v2.0": {
-      "bwets.NetCore.Identity.Service/1.1.0": {
+      "bwets.NetCore.Identity.Service/1.1.1": {
         "dependencies": {
           "Microsoft.AspNetCore": "2.0.3",
           "Microsoft.AspNetCore.Mvc.Core": "2.0.4",
@@ -17,7 +17,7 @@
           "Microsoft.Extensions.Logging.Abstractions": "2.0.2",
           "Microsoft.Extensions.Primitives": "2.0.0",
           "Newtonsoft.Json": "11.0.2",
-          "bwets.NetCore.Identity": "1.1.0"
+          "bwets.NetCore.Identity": "1.1.1"
         },
         "runtime": {
           "bwets.NetCore.Identity.Service.dll": {}
@@ -1063,7 +1063,7 @@
         }
       },
       "System.Threading.Tasks.Extensions/4.4.0": {},
-      "bwets.NetCore.Identity/1.1.0": {
+      "bwets.NetCore.Identity/1.1.1": {
         "dependencies": {
           "Microsoft.AspNetCore.Authorization": "2.0.4",
           "Microsoft.AspNetCore.Identity": "2.0.3"
@@ -1075,7 +1075,7 @@
     }
   },
   "libraries": {
-    "bwets.NetCore.Identity.Service/1.1.0": {
+    "bwets.NetCore.Identity.Service/1.1.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -1885,7 +1885,7 @@
       "path": "system.threading.tasks.extensions/4.4.0",
       "hashPath": "system.threading.tasks.extensions.4.4.0.nupkg.sha512"
     },
-    "bwets.NetCore.Identity/1.1.0": {
+    "bwets.NetCore.Identity/1.1.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

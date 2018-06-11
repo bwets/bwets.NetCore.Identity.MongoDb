@@ -12,7 +12,7 @@ using System;
 using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("bwets.net")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Gregory Kieffer (2018)")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("MongoDb based identity framework for Asp.Net Core 2, forked from the excellent wo" +
     "rk from Matteo Fabbri")]

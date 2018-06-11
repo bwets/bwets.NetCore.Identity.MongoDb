@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using bwets.NetCore.Identity.Model;
 using bwets.NetCore.Identity.Stores;
+using Microsoft.Extensions.Logging;
 using RestSharp;
 
 namespace bwets.NetCore.Identity.ServiceProxy
@@ -10,7 +11,7 @@ namespace bwets.NetCore.Identity.ServiceProxy
 	public class IdentityUserCollectionProxy<TUser> : IdentityObjectCollectionProxy<TUser>, IIdentityUserCollection<TUser>
 		where TUser : IdentityUser
 	{
-		public IdentityUserCollectionProxy(Uri baseUrl) : base(baseUrl, "security/users")
+		public IdentityUserCollectionProxy(ILogger logger, Uri baseUrl) : base(logger, baseUrl, "security/users")
 		{
 		}
 

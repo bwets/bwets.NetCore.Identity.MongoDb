@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFramework>netcoreapp2.0</TargetFramework>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>1.1.0</Version>
+		<Version>1.1.1</Version>
 		<Authors>Gregory Kieffer</Authors>
 		<Company>bwets.net</Company>
 		<Product>bwets.NetCore.Identity</Product>

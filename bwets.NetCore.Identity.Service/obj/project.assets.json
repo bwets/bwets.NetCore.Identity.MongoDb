@@ -1800,7 +1800,7 @@
           "lib/netcoreapp2.0/_._": {}
         }
       },
-      "bwets.NetCore.Identity/1.1.0": {
+      "bwets.NetCore.Identity/1.1.1": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -5251,7 +5251,7 @@
         "version.txt"
       ]
     },
-    "bwets.NetCore.Identity/1.1.0": {
+    "bwets.NetCore.Identity/1.1.1": {
       "type": "project",
       "path": "../bwets.NetCore.Identity/bwets.NetCore.Identity.csproj",
       "msbuildProject": "../bwets.NetCore.Identity/bwets.NetCore.Identity.csproj"
@@ -5269,7 +5269,7 @@
       "Microsoft.Extensions.Primitives >= 2.0.0",
       "Microsoft.NETCore.App >= 2.0.7",
       "Newtonsoft.Json >= 11.0.2",
-      "bwets.NetCore.Identity >= 1.1.0"
+      "bwets.NetCore.Identity >= 1.1.1"
     ]
   },
   "packageFolders": {
@@ -5277,7 +5277,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.1.0",
+    "version": "1.1.1",
     "restore": {
       "projectUniqueName": "C:\\Sources\\bwets\\bwets.NetCore.Identity\\bwets.NetCore.Identity.Service\\bwets.NetCore.Identity.Service.csproj",
       "projectName": "bwets.NetCore.Identity.Service",

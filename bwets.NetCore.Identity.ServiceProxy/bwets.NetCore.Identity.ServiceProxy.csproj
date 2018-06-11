@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>netcoreapp2.0</TargetFramework>
-		<Version>1.1.0</Version>
+		<Version>1.1.1</Version>
 		<Authors>Gregory Kieffer</Authors>
 		<Company>bwets.net</Company>
 		<Product>bwets.NetCore.Identity</Product>
@@ -13,6 +13,7 @@
 		<RepositoryUrl>https://github.com/bwets/bwets.NetCore.Identity.MongoDb</RepositoryUrl>
 		<PackageTags>asp core identity mongo framework aspnetcore mongodb dotnetcore netcore2 core2</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<FileVersion>1.1.1.0</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

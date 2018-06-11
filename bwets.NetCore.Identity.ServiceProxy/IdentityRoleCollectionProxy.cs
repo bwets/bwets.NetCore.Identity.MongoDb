@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using bwets.NetCore.Identity.Model;
 using bwets.NetCore.Identity.Stores;
+using Microsoft.Extensions.Logging;
 using RestSharp;
 
 namespace bwets.NetCore.Identity.ServiceProxy
@@ -9,7 +10,7 @@ namespace bwets.NetCore.Identity.ServiceProxy
 	public class IdentityRoleCollectionProxy<TRole> : IdentityObjectCollectionProxy<TRole>, IIdentityRoleCollection<TRole>
 		where TRole : IdentityRole
 	{
-		public IdentityRoleCollectionProxy(Uri baseUri) : base(baseUri, "security/roles")
+		public IdentityRoleCollectionProxy(ILogger logger, Uri baseUri) : base(logger, baseUri, "security/roles")
 		{
 		}
 

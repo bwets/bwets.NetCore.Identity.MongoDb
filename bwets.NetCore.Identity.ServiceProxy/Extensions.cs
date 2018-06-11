@@ -3,6 +3,7 @@ using bwets.NetCore.Identity.Model;
 using bwets.NetCore.Identity.Stores;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace bwets.NetCore.Identity.ServiceProxy
 {
@@ -49,11 +50,21 @@ namespace bwets.NetCore.Identity.ServiceProxy
 				.AddDefaultTokenProviders();
 			var options = new ServiceOptions();
 			setupServiceAction(options);
-			var userCollection = new IdentityUserCollectionProxy<TUser>(new Uri(options.BaseUrl));
-			var roleCollection = new IdentityRoleCollectionProxy<TRole>(new Uri(options.BaseUrl));
+			
 			// Identity Services
-			services.AddTransient<IUserStore<TUser>>(x => new UserStore<TUser, TRole>(userCollection, roleCollection));
-			services.AddTransient<IRoleStore<TRole>>(x => new RoleStore<TRole>(roleCollection));
+			services.AddTransient<IUserStore<TUser>>(provider =>
+			{
+				var logger = provider.GetRequiredService<ILogger>();
+				var userCollection = new IdentityUserCollectionProxy<TUser>(logger,  new Uri(options.BaseUrl));
+				var roleCollection = new IdentityRoleCollectionProxy<TRole>(logger, new Uri(options.BaseUrl));
+				return new UserStore<TUser, TRole>(userCollection, roleCollection);
+			});
+			services.AddTransient<IRoleStore<TRole>>(provider =>
+			{
+				var logger = provider.GetRequiredService<ILogger>();
+				var roleCollection = new IdentityRoleCollectionProxy<TRole>(logger, new Uri(options.BaseUrl));
+				return new RoleStore<TRole>(roleCollection);
+			});
 
 			return services;
 		}

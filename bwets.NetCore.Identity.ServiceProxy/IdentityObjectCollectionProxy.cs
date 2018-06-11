@@ -1,19 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using bwets.NetCore.Identity.Model;
 using bwets.NetCore.Identity.Stores;
+using Microsoft.Extensions.Logging;
 using RestSharp;
+using RestSharp.Deserializers;
 
 namespace bwets.NetCore.Identity.ServiceProxy
 {
 	public abstract class RestServiceProxy
 	{
+		static RestServiceProxy()
+		{
+			ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, errors) => true;
+		}
 		private readonly RestClient _proxy;
 		private readonly string _serviceName;
+		private readonly ILogger _logger;
 
-		protected RestServiceProxy(Uri baseUri, string serviceName)
+		protected RestServiceProxy(ILogger logger, Uri baseUri, string serviceName)
 		{
+			_logger = logger;
 			_proxy = new RestClient(baseUri);
 			_serviceName = serviceName;
 		}
@@ -25,6 +35,7 @@ namespace bwets.NetCore.Identity.ServiceProxy
 
 		protected async Task Execute(string relativeUri = null, Method method = Method.GET)
 		{
+			
 			await Execute<string>(relativeUri, _ => { }, method);
 		}
 
@@ -41,20 +52,32 @@ namespace bwets.NetCore.Identity.ServiceProxy
 		protected async Task<T> Execute<T>(string relativeUri, Action<RestRequest> configureRequest,
 			Method method = Method.GET)
 		{
-			var request = new RestRequest(RelativeUrl(relativeUri), method);
-
+			var url = RelativeUrl(relativeUri);
+			_logger.LogDebug($"Execute {method} on {url}");
+			var request = new RestRequest(url, method);
 			configureRequest(request);
 
-			var response = await _proxy.ExecuteTaskAsync<T>(request);
-			if (response.IsSuccessful) return response.Data;
-			throw new ApplicationException(response.ErrorMessage);
+			try
+			{
+				var response = await _proxy.ExecuteTaskAsync<T>(request);
+				if (response.IsSuccessful) return response.Data;
+				_logger.LogError($"Execute completed but response not successfull: {response.ErrorMessage}");
+				_logger.LogError("Exception:" + response.ErrorException );
+				_logger.LogTrace($"Data was: {Encoding.UTF8.GetString(response.RawBytes)}");
+				throw new ApplicationException(response.ErrorMessage, response.ErrorException);
+			}
+			catch (Exception e)
+			{
+				_logger.LogError("Execute failed",e);
+				throw;
+			}
 		}
 	}
 
 	public class IdentityObjectCollectionProxy<TItem> : RestServiceProxy, IIdentityObjectCollection<TItem>
 		where TItem : IdentityObject
 	{
-		public IdentityObjectCollectionProxy(Uri baseUri, string service) : base(baseUri, service)
+		public IdentityObjectCollectionProxy(ILogger logger, Uri baseUri, string service) : base(logger,baseUri, service)
 		{
 		}
 
