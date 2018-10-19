@@ -1,6 +1,6 @@
 # Microsoft.AspNetCore.Identity.Mongo
 
-forked from matteofabbri/AspNetCore.Identity.Mongo
+forked from matteofabbri/AspNetCore.Identity.Mongo and bwets/bwets.NetCore.Identity.MongoDb
 
 # Usage
 
@@ -16,6 +16,5 @@ forked from matteofabbri/AspNetCore.Identity.Mongo
 		dbOptions.ConnectionString = "mongodb://localhost/yourDatabase";
 		dbOptions.UsersCollection = "Users"; // this is the default value;
 		dbOptions.RolesCollection = "Roles"; // this is the default value;
-		
 	});
     

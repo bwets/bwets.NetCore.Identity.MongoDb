@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.0</TargetFramework>
+		<AssemblyVersion>1.1.1.0</AssemblyVersion>
+		<Authors>Kyle Noland</Authors>
+		<Company></Company>
+		<Product>Dot.NetCore.Identity</Product>
+		<Description>MongoDb based identity framework for Asp.Net Core 2, forked from the excellent work from Matteo Fabbri and Gregory Kieffer</Description>
+		<Copyright>Kyle Noland (2018)</Copyright>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/kylednoland/Dot.NetCore.Identity.MongoDb/master/LICENSE.txt</PackageLicenseUrl>
+		<PackageProjectUrl>https://github.com/kylednoland/Dot.NetCore.Identity.MongoDb</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/kylednoland/Dot.NetCore.Identity.MongoDb</RepositoryUrl>
+		<PackageTags>asp core identity mongo framework aspnetcore mongodb dotnetcore netcore2 core2</PackageTags>
+		<Version>1.1.1</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="MongoDB.Driver" Version="2.6.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Authorization" Version="2.0.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.3" />
+
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Dot.NetCore.Identity\Dot.NetCore.Identity.csproj" />
+	</ItemGroup>
+
+</Project>
