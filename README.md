@@ -1,3 +1,5 @@
+⛔️ DEPRECATED
+
 # Microsoft.AspNetCore.Identity.Mongo
 
 forked from matteofabbri/AspNetCore.Identity.Mongo
